@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Eduardo Machado</title>
-    <link>http://localhost:1313/blog/</link>
-    <description>Recent content on Eduardo Machado</description>
+    <title>Python on Eduardo Machado</title>
+    <link>http://localhost:1313/blog/tags/python/</link>
+    <description>Recent content in Python on Eduardo Machado</description>
     <generator>Hugo</generator>
     <language>pt-br</language>
     <copyright>© Eduardo Machado</copyright>
     <lastBuildDate>Sat, 26 Apr 2025 10:27:14 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs</title>
       <link>http://localhost:1313/blog/posts/fastapi_python/</link>

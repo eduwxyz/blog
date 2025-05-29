@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python Fastapi Cloud Run on Eduardo Machado</title>
+    <link>http://localhost:1313/blog/tags/python-fastapi-cloud-run/</link>
+    <description>Recent content in Python Fastapi Cloud Run on Eduardo Machado</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <copyright>© Eduardo Machado</copyright>
+    <atom:link href="http://localhost:1313/blog/tags/python-fastapi-cloud-run/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

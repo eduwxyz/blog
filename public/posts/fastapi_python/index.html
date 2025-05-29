@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html><head lang="en"><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs - Eduardo Machado</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="FastAPI no Cloud Run: Entendendo de Verdade o que Roda por Trás
@@ -8,7 +8,7 @@ FastAPI no Cloud Run? Pronto! Sucesso garantido.
 Mas será que é só isso mesmo?
 Será que sabemos o que realmente acontece entre o servidor que recebe as requisições e a forma como o Python executa nosso código?" />
 	<meta property="og:image" content=""/>
-	<meta property="og:url" content="http://localhost:1313/posts/fastapi_python/">
+	<meta property="og:url" content="http://localhost:1313/blog/posts/fastapi_python/">
   <meta property="og:site_name" content="Eduardo Machado">
   <meta property="og:title" content="Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs">
   <meta property="og:description" content="FastAPI no Cloud Run: Entendendo de Verdade o que Roda por Trás Quando começamos a desenvolver APIs modernas, é fácil cair na armadilha de acreditar que basta usar ferramentas “rápidas” para termos aplicações escaláveis.
@@ -20,6 +20,9 @@ Será que sabemos o que realmente acontece entre o servidor que recebe as requis
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-04-26T10:27:14-03:00">
     <meta property="article:modified_time" content="2025-04-26T10:27:14-03:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Fastapi">
+    <meta property="article:tag" content="Cloud Run">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs">
@@ -28,11 +31,40 @@ FastAPI no Cloud Run? Pronto! Sucesso garantido.
 Mas será que é só isso mesmo?
 Será que sabemos o que realmente acontece entre o servidor que recebe as requisições e a forma como o Python executa nosso código?">
 
-        <link href="http://localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+        <link href="http://localhost:1313/blog/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
 	
 
 	
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.6a0f23ea50fd34b46fee262a5a68e17d458c51a2bc99ba1ba018065de6b180c3.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/blog/css/main.6a0f23ea50fd34b46fee262a5a68e17d458c51a2bc99ba1ba018065de6b180c3.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/dark.50b57e12d401420df23965fed157368aba37b76df0ecefd0b1ecd4da664f01a0.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
+		src="http://localhost:1313/blog/js/MathJax.js"></script>
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script><link rel="stylesheet" href="http://localhost:1313/blog/katex/katex.min.css ">
+		<script defer src="http://localhost:1313/blog/katex/katex.min.js"></script>
+		<script defer src="http://localhost:1313/blog/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+		</script>
 </head>
 <body>
         <div class="content"><header>
@@ -40,6 +72,12 @@ Será que sabemos o que realmente acontece entre o servidor que recebe as requis
 		<a href="http://localhost:1313/">Eduardo Machado</a>
 	</div>
 	<nav>
+		
+		<a href="/blog/">Home</a>
+		
+		<a href="/blog/posts">All posts</a>
+		
+		<a href="/blog/tags">Tags</a>
 		
 		
 	</nav>
@@ -52,7 +90,7 @@ Será que sabemos o que realmente acontece entre o servidor que recebe as requis
       <div class="post-content">
         <div class="title">
           <h1 class="title">Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs</h1>
-          <div class="meta">Posted on Apr 26, 2025 <span class="draft-label">DRAFT</span> </div>
+          <div class="meta">Posted on Apr 26, 2025</div>
         </div>
         
         <section class="body">
@@ -194,6 +232,18 @@ Por padrão, o Cloud Run permite até <strong>80 requisições simultâneas por 
         <div class="post-tags">
           
           
+          <nav class="nav tags">
+            <ul class="tags">
+              
+              <li><a href="/tags/python">python</a></li>
+              
+              <li><a href="/tags/fastapi">fastapi</a></li>
+              
+              <li><a href="/tags/cloud-run">cloud run</a></li>
+              
+            </ul>
+          </nav>
+          
           
         </div>
       </div>
@@ -202,12 +252,33 @@ Por padrão, o Cloud Run permite até <strong>80 requisições simultâneas por 
       
     </div>
 
-    </article>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'yourDisqusShortname';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
 </main>
 <footer>
-  <div style="display:flex"></div>
+  <div style="display:flex"><a class="soc" href="https://github.com/eduwxyz" rel="me" title="GitHub"><svg class="feather">
+   <use href="/blog/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
+</svg></a><a class="border"></a></div>
   <div class="footer-info">
-    2025  <a
+    2025  © Eduardo Machado |  <a
       href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
 </footer>

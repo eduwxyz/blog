@@ -1,8 +1,9 @@
-+++
-date = '2025-04-26T10:27:14-03:00'
-draft = true
-title = 'Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs'
-+++
+---
+date: '2025-04-26T10:27:14-03:00'
+draft: false
+title: 'Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs'
+tags: [python,fastapi, cloud run]
+---
 
 # FastAPI no Cloud Run: Entendendo de Verdade o que Roda por Trás
 
