@@ -14,7 +14,7 @@ Quando começamos a desenvolver APIs modernas, é fácil cair na armadilha de ac
 Mas será que é só isso mesmo?  
 Será que sabemos o que realmente acontece entre o servidor que recebe as requisições e a forma como o Python executa nosso código?
 
-Neste artigo, quero fazer um passeio pelas camadas envolvidas nesse processo:  
+Neste post, quero fazer um passeio pelas camadas envolvidas nesse processo:  
 **Cloud Run → Uvicorn → FastAPI → Event Loop e ThreadPool.**
 
 ---
