@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fastapi on Eduardo Machado</title>
-    <link>http://localhost:1313/blog/tags/fastapi/</link>
+    <link>http://localhost:1313/tags/fastapi/</link>
     <description>Recent content in Fastapi on Eduardo Machado</description>
     <generator>Hugo</generator>
     <language>pt-br</language>
     <copyright>© Eduardo Machado</copyright>
     <lastBuildDate>Sat, 26 Apr 2025 10:27:14 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs</title>
-      <link>http://localhost:1313/blog/posts/fastapi_python/</link>
+      <link>http://localhost:1313/posts/fastapi_python/</link>
       <pubDate>Sat, 26 Apr 2025 10:27:14 -0300</pubDate>
-      <guid>http://localhost:1313/blog/posts/fastapi_python/</guid>
+      <guid>http://localhost:1313/posts/fastapi_python/</guid>
       <description>&lt;h1 id=&#34;fastapi-no-cloud-run-entendendo-de-verdade-o-que-roda-por-trás&#34;&gt;FastAPI no Cloud Run: Entendendo de Verdade o que Roda por Trás&lt;/h1&gt;&#xA;&lt;p&gt;Quando começamos a desenvolver APIs modernas, é fácil cair na armadilha de acreditar que basta usar ferramentas &amp;ldquo;rápidas&amp;rdquo; para termos aplicações escaláveis.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;FastAPI no Cloud Run? Pronto! Sucesso garantido.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Mas será que é só isso mesmo?&lt;br&gt;&#xA;Será que sabemos o que realmente acontece entre o servidor que recebe as requisições e a forma como o Python executa nosso código?&lt;/p&gt;</description>
     </item>
   </channel>

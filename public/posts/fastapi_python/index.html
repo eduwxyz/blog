@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head lang="en"><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs - Eduardo Machado</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="FastAPI no Cloud Run: Entendendo de Verdade o que Roda por Trás
@@ -8,7 +8,7 @@ FastAPI no Cloud Run? Pronto! Sucesso garantido.
 Mas será que é só isso mesmo?
 Será que sabemos o que realmente acontece entre o servidor que recebe as requisições e a forma como o Python executa nosso código?" />
 	<meta property="og:image" content=""/>
-	<meta property="og:url" content="http://localhost:1313/blog/posts/fastapi_python/">
+	<meta property="og:url" content="http://localhost:1313/posts/fastapi_python/">
   <meta property="og:site_name" content="Eduardo Machado">
   <meta property="og:title" content="Entendendo FastAPI, async/sync e a verdadeira escalabilidade de APIs">
   <meta property="og:description" content="FastAPI no Cloud Run: Entendendo de Verdade o que Roda por Trás Quando começamos a desenvolver APIs modernas, é fácil cair na armadilha de acreditar que basta usar ferramentas “rápidas” para termos aplicações escaláveis.
@@ -31,13 +31,13 @@ FastAPI no Cloud Run? Pronto! Sucesso garantido.
 Mas será que é só isso mesmo?
 Será que sabemos o que realmente acontece entre o servidor que recebe as requisições e a forma como o Python executa nosso código?">
 
-        <link href="http://localhost:1313/blog/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+        <link href="http://localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
 	
 
 	
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/blog/css/main.6a0f23ea50fd34b46fee262a5a68e17d458c51a2bc99ba1ba018065de6b180c3.css" />
-		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/dark.50b57e12d401420df23965fed157368aba37b76df0ecefd0b1ecd4da664f01a0.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
-		src="http://localhost:1313/blog/js/MathJax.js"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.6a0f23ea50fd34b46fee262a5a68e17d458c51a2bc99ba1ba018065de6b180c3.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.50b57e12d401420df23965fed157368aba37b76df0ecefd0b1ecd4da664f01a0.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
+		src="http://localhost:1313/js/MathJax.js"></script>
 		
 		<script type="text/x-mathjax-config">
 		MathJax.Hub.Config({
@@ -51,9 +51,9 @@ Será que sabemos o que realmente acontece entre o servidor que recebe as requis
 						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
 			}
 		});
-		</script><link rel="stylesheet" href="http://localhost:1313/blog/katex/katex.min.css ">
-		<script defer src="http://localhost:1313/blog/katex/katex.min.js"></script>
-		<script defer src="http://localhost:1313/blog/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		</script><link rel="stylesheet" href="http://localhost:1313/katex/katex.min.css ">
+		<script defer src="http://localhost:1313/katex/katex.min.js"></script>
+		<script defer src="http://localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 		
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {
@@ -73,11 +73,11 @@ Será que sabemos o que realmente acontece entre o servidor que recebe as requis
 	</div>
 	<nav>
 		
-		<a href="/blog/">Home</a>
+		<a href="/">Home</a>
 		
-		<a href="/blog/posts">All posts</a>
+		<a href="/posts">All posts</a>
 		
-		<a href="/blog/tags">Tags</a>
+		<a href="/tags">Tags</a>
 		
 		
 	</nav>
@@ -99,7 +99,7 @@ Será que sabemos o que realmente acontece entre o servidor que recebe as requis
 <p><strong>FastAPI no Cloud Run? Pronto! Sucesso garantido.</strong></p>
 <p>Mas será que é só isso mesmo?<br>
 Será que sabemos o que realmente acontece entre o servidor que recebe as requisições e a forma como o Python executa nosso código?</p>
-<p>Neste artigo, quero fazer um passeio pelas camadas envolvidas nesse processo:<br>
+<p>Neste post, quero fazer um passeio pelas camadas envolvidas nesse processo:<br>
 <strong>Cloud Run → Uvicorn → FastAPI → Event Loop e ThreadPool.</strong></p>
 <hr>
 <h2 id="-cloud-run-infraestrutura-serverless-para-suas-apis">☁️ Cloud Run: Infraestrutura Serverless para Suas APIs</h2>
@@ -275,7 +275,7 @@ Por padrão, o Cloud Run permite até <strong>80 requisições simultâneas por 
 </main>
 <footer>
   <div style="display:flex"><a class="soc" href="https://github.com/eduwxyz" rel="me" title="GitHub"><svg class="feather">
-   <use href="/blog/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
+   <use href="/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
 </svg></a><a class="border"></a></div>
   <div class="footer-info">
     2025  © Eduardo Machado |  <a
